@@ -5,6 +5,9 @@
 # @File    : game1.py
 # @Software: PyCharm
 
+
+# 代码参考来源：微信公众号：菜鸟学Python
+
 import tkinter
 import random
 import time
