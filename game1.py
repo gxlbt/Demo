@@ -15,11 +15,12 @@ tk = tkinter.Tk()
 tk.title("Game")
 tk.resizable(0, 0)
 tk.wm_attributes("-topmost", 1)
-canvas = tkinter.Canvas(tk, width=500, height=400, bd=0, highlightthickness=0)
+canvas = tkinter.Canvas(tk, width=500, height=400, bd=0, highlightthickness=0)  # 设置窗口大小
 canvas.pack()
 tk.update()
 
 
+# 定义一个球类
 class Ball:
     def __init__(self, canvas, paddle, color):
         self.canvas = canvas
@@ -60,6 +61,8 @@ class Ball:
             if a:
                 sys.exit(0)
 
+
+# 定义一个木板类
 class Paddle:
     def turn_left(self, evt):
         self.x = -2
@@ -72,7 +75,7 @@ class Paddle:
         self.id = canvas.create_rectangle(0, 0, 150, 10, fill=color)
         self.canvas.move(self.id, 200, 300)
         self.x = 0
-        self.canvas_witdh = self.canvas.winfo_width()
+        self.canvas_width = self.canvas.winfo_width()
         self.canvas.bind_all('<KeyPress-Left>', self.turn_left)
         self.canvas.bind_all('<KeyPress-Right>', self.turn_right)
 
@@ -81,7 +84,7 @@ class Paddle:
         pos = self.canvas.coords(self.id)
         if pos[0] <= 0:
             self.x = 0
-        elif pos[2] >= self.canvas_witdh:
+        elif pos[2] >= self.canvas_width:
             self.x = 0
 
 
@@ -94,4 +97,3 @@ while 1:
     tk.update_idletasks()
     tk.update()
     time.sleep(0.01)
-
